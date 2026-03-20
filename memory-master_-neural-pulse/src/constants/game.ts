@@ -1,0 +1,90 @@
+import React from 'react';
+import { 
+  Zap, Star, Heart, Moon, Sun, Cloud, Flame, Ghost, Brain, Trophy, Timer, RotateCcw, Play, 
+  CheckCircle2, AlertCircle, Pause, Lightbulb, Settings, User, Medal, ChevronRight, Volume2, 
+  VolumeX, LayoutGrid, Palette, Clock, Hash, Award, X, Eye, EyeOff, LogIn, Activity, Airplay, 
+  Anchor, Aperture, Archive, ArrowDown, ArrowLeft, ArrowRight, ArrowUp, AtSign, BarChart, 
+  Battery, Bell, Bluetooth, Bold, Book, Bookmark, Box, Briefcase, Calendar, Camera, Cast, 
+  Check, ChevronDown, ChevronUp, Chrome, Circle, Clipboard, Code, Codepen, Coffee, Command, 
+  Compass, Copy, Cpu, CreditCard, Crop, Crosshair, Database, Delete, Disc, DollarSign, 
+  Download, Droplet, Edit, ExternalLink, Facebook, FastForward, Feather, File, Film, Filter, 
+  Flag, Folder, Framer, Frown, Gift, GitBranch, GitCommit, GitMerge, GitPullRequest, Github, 
+  Gitlab, Globe, Grid, HardDrive, Headphones, HelpCircle, Hexagon, Home, Image, Inbox, Info, 
+  Instagram, Italic, Key, Layers, Layout, LifeBuoy, Link, Linkedin, List, Loader, Lock, 
+  LogOut, Mail, Map, Maximize, Menu, MessageCircle, Mic, Minimize, Minus, Monitor, 
+  MoreHorizontal, MoreVertical, MousePointer, Move, Music, Navigation, Octagon, Package, 
+  Paperclip, PenTool, Percent, Phone, PieChart, Plus, Pocket, Power, Printer, Radio, 
+  RefreshCcw, Repeat, Rewind, RotateCw, Rss, Save, Scissors, Search, Send, Server, Share, 
+  Shield, ShoppingBag, ShoppingCart, Shuffle, Sidebar, SkipBack, SkipForward, Slack, Slash, 
+  Sliders, Smartphone, Smile, Speaker, Square, StopCircle, Sunrise, Sunset, Tablet, Tag, 
+  Target, Terminal, Thermometer, ThumbsDown, ThumbsUp, ToggleLeft, ToggleRight, Trash, 
+  Trello, TrendingDown, TrendingUp, Triangle, Truck, Tv, Twitch, Twitter, Type, Umbrella, 
+  Underline, Unlock, Upload, Users, Video, Voicemail, Volume, Watch, Wifi, Wind, Youtube, 
+  ZoomIn, ZoomOut
+} from 'lucide-react';
+import { Difficulty, GridConfig, Theme } from '../types/game';
+
+export const GRID_CONFIG: Record<Difficulty, GridConfig> = {
+  easy: { rows: 4, cols: 4, timeLimit: 60, hints: 3 },
+  medium: { rows: 6, cols: 6, timeLimit: 120, hints: 5 },
+  hard: { rows: 8, cols: 8, timeLimit: 240, hints: 8 },
+  extreme: { rows: 10, cols: 10, timeLimit: 480, hints: 12 },
+};
+
+export const ICON_MAP: Record<string, React.ElementType> = {
+  Zap, Star, Heart, Moon, Sun, Cloud, Flame, Ghost, Brain, Trophy, Timer, RotateCcw, Play, 
+  CheckCircle2, AlertCircle, Pause, Lightbulb, Settings, User, Medal, ChevronRight, Volume2, 
+  VolumeX, LayoutGrid, Palette, Clock, Hash, Award, X, Eye, EyeOff, LogIn, Activity, Airplay, 
+  Anchor, Aperture, Archive, ArrowDown, ArrowLeft, ArrowRight, ArrowUp, AtSign, BarChart, 
+  Battery, Bell, Bluetooth, Bold, Book, Bookmark, Box, Briefcase, Calendar, Camera, Cast, 
+  Check, ChevronDown, ChevronUp, Chrome, Circle, Clipboard, Code, Codepen, Coffee, Command, 
+  Compass, Copy, Cpu, CreditCard, Crop, Crosshair, Database, Delete, Disc, DollarSign, 
+  Download, Droplet, Edit, ExternalLink, Facebook, FastForward, Feather, File, Film, Filter, 
+  Flag, Folder, Framer, Frown, Gift, GitBranch, GitCommit, GitMerge, GitPullRequest, Github, 
+  Gitlab, Globe, Grid, HardDrive, Headphones, HelpCircle, Hexagon, Home, Image, Inbox, Info, 
+  Instagram, Italic, Key, Layers, Layout, LifeBuoy, Link, Linkedin, List, Loader, Lock, 
+  LogOut, Mail, Map, Maximize, Menu, MessageCircle, Mic, Minimize, Minus, Monitor, 
+  MoreHorizontal, MoreVertical, MousePointer, Move, Music, Navigation, Octagon, Package, 
+  Paperclip, PenTool, Percent, Phone, PieChart, Plus, Pocket, Power, Printer, Radio, 
+  RefreshCcw, Repeat, Rewind, RotateCw, Rss, Save, Scissors, Search, Send, Server, Share, 
+  Shield, ShoppingBag, ShoppingCart, Shuffle, Sidebar, SkipBack, SkipForward, Slack, Slash, 
+  Sliders, Smartphone, Smile, Speaker, Square, StopCircle, Sunrise, Sunset, Tablet, Tag, 
+  Target, Terminal, Thermometer, ThumbsDown, ThumbsUp, ToggleLeft, ToggleRight, Trash, 
+  Trello, TrendingDown, TrendingUp, Triangle, Truck, Tv, Twitch, Twitter, Type, Umbrella, 
+  Underline, Unlock, Upload, Users, Video, Voicemail, Volume, Watch, Wifi, Wind, Youtube, 
+  ZoomIn, ZoomOut
+};
+
+export const THEME_DATA: Record<Theme, string[]> = {
+  animals: ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸', '🐵', '🐔', '🐧', '🐦', '🐤', '🐣', '🐥', '🦆', '🦅', '🦉', '🦇', '🐺', '🐗', '🐴', '🦄', '🐝', '🐛', '🦋', '🐌', '🐞', '🐜', '🦟', '🦗', '🕷', '🕸', '🦂', '🐢', '🐍', '🦎', '🦖', '🦕', '🐙', '🦑', '🦐', '🦞', '🦀', '🐡', '🐠', '🐟', '🐬', '🐳', '🐋', '🦈', '🐊', '🐅', '🐆', '🦓', '🦍', '🦧', '🐘', '🦛', '🦏', '🐪', '🐫', '🦒', '🦘', '🐃', '🐂', '🐄', '🐎', '🐖', '🐏', '🐑', '🐐', '🦌', '🐕', '🐩', '🐈', '🐓', '🦃', '🕊', '🐇', '🐁', '🐀', '🐿', '🦔', '🐾', '🐉', '🐲', '🌵', '🎄', '🌲', '🌳', '🌴', '🌱', '🌿', '☘️', '🍀', '🎍', '🎋', '🍃', '🍂', '🍁', '🍄', '🌾', '💐', '🌷', '🌹', '🥀', '🌺', '🌸', '🌼', '🌻', '🌞', '🌝', '🌛', '🌜', '🌚', '🌕', '🌖', '🌗', '🌘', '🌑', '🌒', '🌓', '🌔', '🌙', '🌎', '🌍', '🌏', '🪐', '💫', '⭐️', '🌟', '✨', '⚡️', '☄️', '💥', '🔥', '🌪', '🌈', '☀️', '🌤', '⛅️', '🌥', '☁️', '🌦', '🌧', '⛈', '🌩', '🌨', '❄️', '☃️', '⛄️', '🌬', '💨', '💧', '💦', '☔️', '☂️', '🌊', '🌫'],
+  emojis: ['😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉', '😊', '😋', '😎', '😍', '😘', '😗', '😙', '😚', '☺️', '🤩', '🤔', '🤨', '😐', '😑', '😶', '🙄', '😏', '😣', '😥', '😮', '🤐', '😯', '😪', '😫', '😴', '😌', '😛', '😜', '😝', '🤤', '😒', '😓', '😔', '😕', '🙃', '🤑', '😲', '☹️', '🙁', '😖', '😞', '😟', '😤', '😢', '😭', '😦', '😧', '😨', '😩', '🤯', '😬', '😰', '😱', '🥵', '🥶', '😳', '🤪', '😵', '😡', '😠', '🤬', '😷', '🤒', '🤕', '🤢', '🤮', '🤧', '😇', '🥳', '🥺', '🤠', '🤡', '🤥', '🤫', '🤭', '🧐', '🤓', '😈', '👿', '👹', '👺', '💀', '👻', '👽', '👾', '🤖', '💩', '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾', '🙈', '🙉', '🙊', '💋', '💌', '💘', '💝', '💖', '💗', '💓', '💞', '💕', '💟', '❣️', '💔', '❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '💯', '💢', '💥', '💫', '💦', '💨', '🕳', '💣', '💬', '👁‍🗨', '🗨', '🗯', '💭', '💤'],
+  icons: [
+    'Zap', 'Star', 'Heart', 'Moon', 'Sun', 'Cloud', 'Flame', 'Ghost', 'Brain', 'Trophy', 
+    'Timer', 'RotateCcw', 'Play', 'CheckCircle2', 'AlertCircle', 'Pause', 'Lightbulb', 
+    'Settings', 'User', 'Medal', 'ChevronRight', 'Volume2', 'VolumeX', 'LayoutGrid', 
+    'Palette', 'Clock', 'Hash', 'Award', 'X', 'Eye', 'EyeOff', 'Activity', 'Airplay', 
+    'Anchor', 'Aperture', 'Archive', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 
+    'AtSign', 'BarChart', 'Battery', 'Bell', 'Bluetooth', 'Bold', 'Book', 'Bookmark', 
+    'Box', 'Briefcase', 'Calendar', 'Camera', 'Cast', 'Check', 'ChevronDown', 'ChevronUp', 
+    'Chrome', 'Circle', 'Clipboard', 'Code', 'Codepen', 'Coffee', 'Command', 'Compass', 
+    'Copy', 'Cpu', 'CreditCard', 'Crop', 'Crosshair', 'Database', 'Delete', 'Disc', 
+    'DollarSign', 'Download', 'Droplet', 'Edit', 'ExternalLink', 'Facebook', 'FastForward', 
+    'Feather', 'File', 'Film', 'Filter', 'Flag', 'Folder', 'Framer', 'Frown', 'Gift', 
+    'GitBranch', 'GitCommit', 'GitMerge', 'GitPullRequest', 'Github', 'Gitlab', 'Globe', 
+    'Grid', 'HardDrive', 'Headphones', 'HelpCircle', 'Hexagon', 'Home', 'Image', 
+    'Inbox', 'Info', 'Instagram', 'Italic', 'Key', 'Layers', 'Layout', 'LifeBuoy', 'Link', 
+    'Linkedin', 'List', 'Loader', 'Lock', 'LogOut', 'Mail', 'Map', 'Maximize', 'Menu', 
+    'MessageCircle', 'Mic', 'Minimize', 'Minus', 'Monitor', 'MoreHorizontal', 'MoreVertical', 
+    'MousePointer', 'Move', 'Music', 'Navigation', 'Octagon', 'Package', 'Paperclip', 
+    'PenTool', 'Percent', 'Phone', 'PieChart', 'Plus', 'Pocket', 'Power', 'Printer', 
+    'Radio', 'RefreshCcw', 'Repeat', 'Rewind', 'RotateCw', 'Rss', 'Save', 'Scissors', 
+    'Search', 'Send', 'Server', 'Share', 'Shield', 'ShoppingBag', 'ShoppingCart', 'Shuffle', 
+    'Sidebar', 'SkipBack', 'SkipForward', 'Slack', 'Slash', 'Sliders', 'Smartphone', 
+    'Smile', 'Speaker', 'Square', 'StopCircle', 'Sunrise', 'Sunset', 'Tablet', 'Tag', 
+    'Target', 'Terminal', 'Thermometer', 'ThumbsDown', 'ThumbsUp', 'ToggleLeft', 'ToggleRight', 
+    'Trash', 'Trello', 'TrendingDown', 'TrendingUp', 'Triangle', 'Truck', 'Tv', 'Twitch', 
+    'Twitter', 'Type', 'Umbrella', 'Underline', 'Unlock', 'Upload', 'Users', 'Video', 
+    'Voicemail', 'Volume', 'Watch', 'Wifi', 'Wind', 'Youtube', 'ZoomIn', 'ZoomOut'
+  ],
+  abstract: ['Geometric', 'Pattern', 'Gradient', 'Texture', 'Noise', 'Wave', 'Grid', 'Dot', 'Line', 'Circle', 'Square', 'Triangle', 'Polygon', 'Hexagon', 'Octagon', 'Star', 'Heart', 'Spiral', 'Fractal', 'Symmetry', 'Asymmetry', 'Balance', 'Contrast', 'Rhythm', 'Movement', 'Emphasis', 'Unity', 'Variety', 'Proportion', 'Scale', 'Space', 'Form', 'Shape', 'Color', 'Value', 'Texture', 'Line', 'Point', 'Plane', 'Volume', 'Mass', 'Density', 'Weight', 'Gravity', 'Force', 'Energy', 'Light', 'Shadow', 'Reflection', 'Refraction', 'Transparency', 'Opacity', 'Blur', 'Focus', 'Depth', 'Perspective', 'Dimension', 'Motion', 'Time', 'Sequence', 'Process', 'System', 'Structure', 'Order', 'Chaos', 'Entropy', 'Complexity', 'Simplicity', 'Minimalism', 'Maximalism', 'Modernism', 'Postmodernism', 'Futurism', 'Surrealism', 'Expressionism', 'Impressionism', 'Realism', 'Abstraction', 'Conceptualism', 'Brutalism', 'Deconstructivism', 'Constructivism', 'Suprematism', 'Dadaism', 'PopArt', 'OpArt', 'StreetArt', 'Graffiti', 'DigitalArt', 'GenerativeArt', 'AIArt', 'GlitchArt', 'Vaporwave', 'Cyberpunk', 'Steampunk', 'Solarpunk', 'Biopunk', 'Nanopunk', 'Dieselpunk', 'Atompunk', 'Raypunk', 'CassetteFuturism', 'Retrofuturism', 'Synthwave', 'Outrun', 'Dreamcore', 'LiminalSpace', 'Weirdcore', 'Traumacore', 'Glitchcore', 'Webcore', 'Y2K', 'FrutigerAero', 'Skeuomorphism', 'Neumorphism', 'Glassmorphism', 'Claymorphism', 'FlatDesign', 'MaterialDesign', 'FluentDesign', 'HumanInterfaceDesign', 'MetroDesign', 'SwissDesign', 'Bauhaus', 'ArtDeco', 'ArtNouveau', 'Victorian', 'Edwardian', 'Baroque', 'Rococo', 'Renaissance', 'Gothic', 'Romanesque', 'Byzantine', 'Classical', 'Ancient', 'Prehistoric', 'Tribal', 'Folk', 'Traditional', 'Cultural', 'Global', 'Universal', 'Cosmic', 'Infinite', 'Eternal', 'Absolute', 'Relative', 'Subjective', 'Objective', 'Rational', 'Irrational', 'Logical', 'Illogical', 'Paradoxical', 'Metaphorical', 'Symbolic', 'Allegorical', 'Mythological', 'Spiritual', 'Mystical', 'Esoteric', 'Occult', 'Alchemical', 'Hermetic', 'Theosophical', 'Anthroposophical', 'Philosophical', 'Existential', 'Phenomenological', 'Ontological', 'Epistemological', 'Axiological', 'Ethical', 'Political', 'Social', 'Psychological', 'Biological', 'Chemical', 'Physical', 'Mathematical', 'Geometrical', 'Astronomical', 'Geological', 'Meteorological', 'Oceanographic', 'Ecological', 'Environmental', 'Sustainable', 'Regenerative', 'Evolutionary', 'Revolutionary', 'Transformative', 'Transcendent', 'Immanent', 'Manifest', 'Unmanifest', 'Potential', 'Actual', 'Virtual', 'Real', 'Imaginary', 'Fictional', 'Speculative', 'Utopian', 'Dystopian', 'Heterotopian', 'Atopian', 'Eutopian', 'Cacotopian', 'Protopian', 'Solutopian', 'Hopeful', 'Despairing', 'Nihilistic', 'Optimistic', 'Pessimistic', 'Stoic', 'Epicurean', 'Cynic', 'Skeptic', 'Dogmatic', 'Pragmatic', 'Idealistic', 'Materialistic', 'Dualistic', 'Monistic', 'Pluralistic', 'Holistic', 'Reductionist', 'Emergent', 'Complex', 'Simple', 'Fractal', 'Holographic', 'Recursive', 'SelfSimilar', 'Iterative', 'Algorithmic', 'Generative', 'Procedural', 'Modular', 'Scalable', 'Flexible', 'Adaptable', 'Resilient', 'Robust', 'Efficient', 'Effective', 'Optimal', 'Elegant', 'Beautiful', 'Sublime', 'Grotesque', 'Uncanny', 'Abject', 'Kitsch', 'Camp', 'Tacky', 'Cheesy', 'Corny', 'Cliché', 'Original', 'Authentic', 'Unique', 'Rare', 'Common', 'Universal', 'Particular', 'Individual', 'Collective', 'Social', 'Personal', 'Private', 'Public', 'Secret', 'Open', 'Transparent', 'Opaque', 'Translucent', 'Luminous', 'Radiant', 'Glowing', 'Shining', 'Brilliant', 'Dazzling', 'Vibrant', 'Vivid', 'Intense', 'Saturated', 'Muted', 'Subtle', 'Soft', 'Hard', 'Sharp', 'Smooth', 'Rough', 'Coarse', 'Fine', 'Delicate', 'Strong', 'Weak', 'Bold', 'Timid', 'Confident', 'Uncertain', 'Certain', 'Absolute', 'Relative', 'Infinite', 'Finite', 'Eternal', 'Temporal', 'Spatial', 'Dimensionless', 'Multidimensional', 'Fractal', 'NonEuclidean', 'Hyperbolic', 'Spherical', 'Flat', 'Curved', 'Warped', 'Twisted', 'Bent', 'Broken', 'Whole', 'Complete', 'Incomplete', 'Perfect', 'Imperfect', 'Flawless', 'Defective', 'Broken', 'Fixed', 'Repaired', 'Restored', 'Renewed', 'Reborn', 'Transformed', 'Evolved', 'Ascended', 'Transcended'],
+};

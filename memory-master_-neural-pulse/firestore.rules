@@ -1,0 +1,94 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Document ID: {uid}
+    // Fields:
+    //   - uid: string (required, immutable)
+    //   - displayName: string (required)
+    //   - email: string (optional)
+    //   - photoURL: string (optional)
+    //   - stats: map (required)
+    //     - gamesPlayed: number
+    //     - wins: number
+    //     - bestScore: number
+    //     - totalMoves: number
+    //     - totalTime: number
+    //   - achievements: list (optional)
+    //   - createdAt: timestamp (required, immutable)
+    //
+    // Collection: scores
+    // Document ID: auto-generated
+    // Fields:
+    //   - playerName: string (required)
+    //   - score: number (required)
+    //   - difficulty: string (required, enum)
+    //   - mode: string (required, enum)
+    //   - theme: string (optional)
+    //   - moves: number (optional)
+    //   - date: timestamp (required, immutable)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "sirimajjari7474@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'displayName', 'stats']) &&
+             data.uid == request.auth.uid &&
+             data.displayName is string && data.displayName.size() > 0 && data.displayName.size() < 50 &&
+             data.stats is map &&
+             data.stats.gamesPlayed is number &&
+             data.stats.wins is number &&
+             data.stats.bestScore is number &&
+             data.stats.totalMoves is number &&
+             data.stats.totalTime is number;
+    }
+
+    function isValidScore(data) {
+      return data.keys().hasAll(['playerName', 'score', 'difficulty', 'mode']) &&
+             data.playerName is string && data.playerName.size() > 0 && data.playerName.size() < 50 &&
+             data.score is number && data.score >= 0 &&
+             data.difficulty in ['easy', 'medium', 'hard', 'extreme'] &&
+             data.mode in ['time-attack', 'zen', 'endless', 'daily'];
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /users/{uid} {
+      allow read: if isAuthenticated();
+      allow create: if isOwner(uid) && isValidUser(request.resource.data);
+      allow update: if isOwner(uid) && isValidUser(request.resource.data) &&
+                      request.resource.data.uid == resource.data.uid &&
+                      request.resource.data.createdAt == resource.data.createdAt;
+      allow delete: if isAdmin();
+    }
+
+    match /scores/{scoreId} {
+      allow read: if true; // Leaderboard is public
+      allow create: if isAuthenticated() && isValidScore(request.resource.data);
+      allow update, delete: if isAdmin();
+    }
+  }
+}

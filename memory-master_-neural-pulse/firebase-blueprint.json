@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile and statistics",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "gamesPlayed": { "type": "number" },
+            "wins": { "type": "number" },
+            "bestScore": { "type": "number" },
+            "totalMoves": { "type": "number" },
+            "totalTime": { "type": "number" }
+          }
+        },
+        "achievements": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "displayName", "stats"]
+    },
+    "ScoreEntry": {
+      "title": "ScoreEntry",
+      "description": "A single game score entry",
+      "type": "object",
+      "properties": {
+        "playerName": { "type": "string" },
+        "score": { "type": "number" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard", "extreme"] },
+        "mode": { "type": "string", "enum": ["time-attack", "zen", "endless", "daily"] },
+        "theme": { "type": "string" },
+        "moves": { "type": "number" },
+        "date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["playerName", "score", "difficulty", "mode"]
+    }
+  },
+  "firestore": {
+    "users/{uid}": {
+      "schema": "UserProfile",
+      "description": "User profiles"
+    },
+    "scores": {
+      "schema": "ScoreEntry",
+      "description": "Global leaderboard scores"
+    }
+  }
+}
